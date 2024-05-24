@@ -1,0 +1,6 @@
+Mehic               Meho            10 17
+Sabic               Sabo            17 17
+Nikic               Niko            10 17
+Nekic               Neko            20 20
+Pihic               Piho            20  9
+Alic                Alo             10 18

@@ -1,0 +1,162 @@
+{
+    "id": 7161,
+    "name": "Osnove ra\u010dunarstva (2015\/2016), Tutorijal 11, zadatak 6",
+    "languages": [
+        "C"
+    ],
+    "tools": {
+        "compile": {
+            "require": "gcc",
+            "features": [
+                "optimize",
+                "warn",
+                "pedantic"
+            ]
+        },
+        "compile[debug]": {
+            "require": "gcc",
+            "features": [
+                "debug"
+            ]
+        },
+        "execute": {
+            "environment": {
+                "timeout": 10,
+                "memory": 1000000
+            }
+        },
+        "debug": [],
+        "profile[memcheck]": {
+            "require": "valgrind",
+            "features": [
+                "memcheck"
+            ],
+            "environment": {
+                "timeout": 10
+            }
+        },
+        "profile[sgcheck]": {
+            "require": "valgrind",
+            "features": [
+                "sgcheck"
+            ],
+            "environment": {
+                "timeout": 10
+            }
+        }
+    },
+    "tests": [
+        {
+            "compile": [],
+            "options": [
+                "silent",
+                "terminate"
+            ]
+        },
+        {
+            "id": 1753,
+            "compile[debug]": [],
+            "execute": {
+                "environment": {
+                    "stdin": "1\nMeho\nMehic\n123456\n2\n0"
+                },
+                "expect": [
+                    "Pritisnite 1 za unos, 2 za ispis, 0 za izlaz: Unesite ime: Unesite prezime: Unesite broj telefona: Pritisnite 1 za unos, 2 za ispis, 0 za izlaz: \n1. Meho Mehic, Tel: 123456\nPritisnite 1 za unos, 2 za ispis, 0 za izlaz: "
+                ]
+            },
+            "debug": [],
+            "profile[memcheck]": {
+                "environment": {
+                    "stdin": "1\nMeho\nMehic\n123456\n2\n0"
+                }
+            },
+            "profile[sgcheck]": {
+                "environment": {
+                    "stdin": "1\nMeho\nMehic\n123456\n2\n0"
+                }
+            },
+            "options": [
+                "reuse"
+            ]
+        },
+        {
+            "id": 1758,
+            "patch": [
+                {
+                    "position": "main",
+                    "code": "struct Osoba o=unos_osobe();\nprintf(\"\\n%s %s %d\", o.ime, o.prezime, o.telefon);",
+                    "use_markers": true
+                }
+            ],
+            "compile[debug]": [],
+            "execute": {
+                "environment": {
+                    "stdin": "Pero\nPeric\n434343"
+                },
+                "expect": [
+                    "Unesite ime: Unesite prezime: Unesite broj telefona: \nPero Peric 434343"
+                ]
+            },
+            "debug": [],
+            "profile[memcheck]": {
+                "environment": {
+                    "stdin": "Pero\nPeric\n434343"
+                }
+            },
+            "profile[sgcheck]": {
+                "environment": {
+                    "stdin": "Pero\nPeric\n434343"
+                }
+            }
+        },
+        {
+            "id": 1759,
+            "patch": [
+                {
+                    "position": "main",
+                    "code": "struct Osoba o;\nstrcpy(o.ime, \"Mato\");\nstrcpy(o.prezime, \"Matic\");\no.telefon=14;\nispis_osobe(o);",
+                    "use_markers": true
+                },
+                {
+                    "position": "top_of_file",
+                    "code": "#include <string.h>",
+                    "use_markers": true
+                }
+            ],
+            "compile[debug]": [],
+            "execute": {
+                "expect": [
+                    "Mato Matic, Tel: 14\n"
+                ]
+            },
+            "debug": [],
+            "profile[memcheck]": [],
+            "profile[sgcheck]": []
+        },
+        {
+            "id": 1760,
+            "execute": {
+                "environment": {
+                    "stdin": "1\nMeho\nMehic\n123456\n1\nPero\nPeric\n434343\n2\n1\nMato\nMatic\n14\n2\n0"
+                },
+                "expect": [
+                    "Pritisnite 1 za unos, 2 za ispis, 0 za izlaz: Unesite ime: Unesite prezime: Unesite broj telefona: Pritisnite 1 za unos, 2 za ispis, 0 za izlaz: Unesite ime: Unesite prezime: Unesite broj telefona: Pritisnite 1 za unos, 2 za ispis, 0 za izlaz: \n1. Meho Mehic, Tel: 123456\n2. Pero Peric, Tel: 434343\nPritisnite 1 za unos, 2 za ispis, 0 za izlaz: Unesite ime: Unesite prezime: Unesite broj telefona: Pritisnite 1 za unos, 2 za ispis, 0 za izlaz: \n1. Meho Mehic, Tel: 123456\n2. Pero Peric, Tel: 434343\n3. Mato Matic, Tel: 14\nPritisnite 1 za unos, 2 za ispis, 0 za izlaz: "
+                ]
+            },
+            "debug": [],
+            "profile[memcheck]": {
+                "environment": {
+                    "stdin": "1\nMeho\nMehic\n123456\n1\nPero\nPeric\n434343\n2\n1\nMato\nMatic\n14\n2\n0"
+                }
+            },
+            "profile[sgcheck]": {
+                "environment": {
+                    "stdin": "1\nMeho\nMehic\n123456\n1\nPero\nPeric\n434343\n2\n1\nMato\nMatic\n14\n2\n0"
+                }
+            },
+            "options": [
+                "reuse"
+            ]
+        }
+    ]
+}

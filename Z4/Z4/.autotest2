@@ -1,0 +1,228 @@
+{
+    "id": 1073,
+    "name": "Osnove ra\u010dunarstva (2015\/2016), Zada\u0107a 4, zadatak 4",
+    "languages": [
+        "C"
+    ],
+    "tools": {
+        "compile": {
+            "require": "gcc",
+            "features": [
+                "optimize",
+                "warn",
+                "pedantic"
+            ]
+        },
+        "compile[debug]": {
+            "require": "gcc",
+            "features": [
+                "debug"
+            ]
+        },
+        "execute": {
+            "environment": {
+                "timeout": 10,
+                "memory": 1000000
+            }
+        },
+        "debug": [],
+        "profile[memcheck]": {
+            "require": "valgrind",
+            "features": [
+                "memcheck"
+            ],
+            "environment": {
+                "timeout": 10
+            }
+        },
+        "profile[sgcheck]": {
+            "require": "valgrind",
+            "features": [
+                "sgcheck"
+            ],
+            "environment": {
+                "timeout": 10
+            }
+        }
+    },
+    "tests": [
+        {
+            "compile": [],
+            "options": [
+                "silent",
+                "terminate"
+            ]
+        },
+        {
+            "id": 1074,
+            "patch": [
+                {
+                    "position": "main",
+                    "code": "int ok1, ok2, ok3, ok4;\nint x = izracunaj (\"2+2\", &ok1);\nint y = izracunaj (\"2-2\", &ok2);\nint z = izracunaj (\"-2+2\", &ok3);\nint r = izracunaj (\"-2-2\", &ok4);\nprintf (\"%i %i %i %i\\n\", x, y, z, r);\nprintf (\"%i %i %i %i\", ok1, ok2, ok3, ok4);",
+                    "use_markers": true
+                }
+            ],
+            "compile[debug]": [],
+            "execute": {
+                "expect": [
+                    "4 0 0 -4\n1 1 1 1"
+                ]
+            },
+            "debug": [],
+            "profile[memcheck]": [],
+            "profile[sgcheck]": []
+        },
+        {
+            "id": 1075,
+            "patch": [
+                {
+                    "position": "main",
+                    "code": "int ok1, ok2, ok3;\nint x = izracunaj (\"2+2+6\", &ok1);\nint y = izracunaj (\"2-2-2\", &ok2);\nizracunaj (\"--2\", &ok3);\nprintf (\"%i %i\\n\", x, y);\nprintf (\"%i %i %i\", ok1, ok2, ok3);",
+                    "use_markers": true
+                }
+            ],
+            "compile[debug]": [],
+            "execute": {
+                "expect": [
+                    "10 -2\n1 1 0"
+                ]
+            },
+            "debug": [],
+            "profile[memcheck]": [],
+            "profile[sgcheck]": []
+        },
+        {
+            "id": 1076,
+            "patch": [
+                {
+                    "position": "main",
+                    "code": "int ok;\nint rez = izracunaj(\"^^33^^\", &ok); \nif (ok) printf(\"rezultat je: %d\\n\", rez); else printf(\"greska\\n\");\nrez = izracunaj(\"2+-123456-+2\", &ok); \nif (ok) printf(\"rezultat je: %d\\n\", rez); else printf(\"greska\\n\");\nrez = izracunaj(\"+\", &ok);\nif (ok) printf(\"rezultat je: %d\\n\", rez); else printf(\"greska\\n\");\nrez = izracunaj(\"1+2+3\", &ok);\nif (ok) printf(\"ok\"); else printf(\"greska\\n\");\n\n",
+                    "use_markers": true
+                }
+            ],
+            "compile[debug]": [],
+            "execute": {
+                "expect": [
+                    "greska\ngreska\ngreska\nok"
+                ]
+            },
+            "debug": [],
+            "profile[memcheck]": [],
+            "profile[sgcheck]": []
+        },
+        {
+            "id": 1077,
+            "patch": [
+                {
+                    "position": "main",
+                    "code": "int ok;\nint rez = izracunaj(\"------2\", &ok);\nif (ok) printf(\"rezultat je: %d\\n\", rez); else printf(\"greska\\n\");\nrez = izracunaj(\"2*--2\", &ok);\nif (ok) printf(\"rezultat je: %d\\n\", rez); else printf(\"greska\\n\");\nrez = izracunaj(\"2^--2\", &ok);\nif (ok) printf(\"rezultat je: %d\\n\", rez); else printf(\"greska\\n\");\nrez = izracunaj(\"2+--2\", &ok);\nif (ok) printf(\"rezultat je: %d\\n\", rez); else printf(\"greska\\n\");\nrez = izracunaj(\"2\/--2\", &ok);\nif (ok) printf(\"rezultat je: %d\\n\", rez); else printf(\"greska\\n\");\nrez = izracunaj(\"1-2\/3\", &ok);\nif (ok) printf(\"ok\"); else printf(\"greska\\n\");\n\n\n",
+                    "use_markers": true
+                }
+            ],
+            "compile[debug]": [],
+            "execute": {
+                "expect": [
+                    "greska\ngreska\ngreska\ngreska\ngreska\nok"
+                ]
+            },
+            "debug": [],
+            "profile[memcheck]": [],
+            "profile[sgcheck]": []
+        },
+        {
+            "id": 1080,
+            "patch": [
+                {
+                    "position": "main",
+                    "code": "int ok, rez;\nrez = izracunaj(\"1+10+100\", &ok);\nif (ok) printf(\"rezultat je: %d\\n\", rez); else printf(\"greska\\n\");\nrez = izracunaj(\"123+1234+12345\", &ok);\nif (ok) printf(\"rezultat je: %d\\n\", rez); else printf(\"greska\\n\");\nrez = izracunaj(\"1+2+3+4+5+6+7+8+9+8+7+6+5+4+3+2+1+0\", &ok);\nif (ok) printf(\"rezultat je: %d\", rez); else printf(\"greska\\n\");",
+                    "use_markers": true
+                }
+            ],
+            "compile[debug]": [],
+            "execute": {
+                "expect": [
+                    "rezultat je: 111\nrezultat je: 13702\nrezultat je: 81"
+                ]
+            },
+            "debug": [],
+            "profile[memcheck]": [],
+            "profile[sgcheck]": []
+        },
+        {
+            "id": 1081,
+            "patch": [
+                {
+                    "position": "main",
+                    "code": "int ok, rez;\nrez = izracunaj(\"1-10-100\", &ok);\nif (ok) printf(\"rezultat je: %d\\n\", rez); else printf(\"greska\\n\");\nrez = izracunaj(\"12345-1234-123\", &ok);\nif (ok) printf(\"rezultat je: %d\\n\", rez); else printf(\"greska\\n\");\nrez = izracunaj(\"9-3-2-1-0\", &ok);\nif (ok) printf(\"rezultat je: %d\", rez); else printf(\"greska\\n\");",
+                    "use_markers": true
+                }
+            ],
+            "compile[debug]": [],
+            "execute": {
+                "expect": [
+                    "rezultat je: -109\nrezultat je: 10988\nrezultat je: 3"
+                ]
+            },
+            "debug": [],
+            "profile[memcheck]": [],
+            "profile[sgcheck]": []
+        },
+        {
+            "id": 1082,
+            "patch": [
+                {
+                    "position": "main",
+                    "code": "int ok, rez;\nrez = izracunaj(\"1*10*100\", &ok);\nif (ok) printf(\"rezultat je: %d\\n\", rez); else printf(\"greska\\n\");\nrez = izracunaj(\"1*123*1234\", &ok);\nif (ok) printf(\"rezultat je: %d\\n\", rez); else printf(\"greska\\n\");\nrez = izracunaj(\"9*3*2*0\", &ok);\nif (ok) printf(\"rezultat je: %d\\n\", rez); else printf(\"greska\\n\");\n",
+                    "use_markers": true
+                }
+            ],
+            "compile[debug]": [],
+            "execute": {
+                "expect": [
+                    "rezultat je: 1000\nrezultat je: 151782\nrezultat je: 0"
+                ]
+            },
+            "debug": [],
+            "profile[memcheck]": [],
+            "profile[sgcheck]": []
+        },
+        {
+            "id": 1083,
+            "patch": [
+                {
+                    "position": "main",
+                    "code": "int ok, rez;\nrez = izracunaj(\"100\/10\/1\", &ok);\nif (ok) printf(\"rezultat je: %d\\n\", rez); else printf(\"greska\\n\");\nrez = izracunaj(\"123456\/123\/12\", &ok);\nif (ok) printf(\"rezultat je: %d\\n\", rez); else printf(\"greska\\n\");\nrez = izracunaj(\"9\/4\/3\", &ok);\nif (ok) printf(\"rezultat je: %d\", rez); else printf(\"greska\\n\");\n",
+                    "use_markers": true
+                }
+            ],
+            "compile[debug]": [],
+            "execute": {
+                "expect": [
+                    "rezultat je: 10\nrezultat je: 83\nrezultat je: 0"
+                ]
+            },
+            "debug": [],
+            "profile[memcheck]": [],
+            "profile[sgcheck]": []
+        },
+        {
+            "id": 1088,
+            "patch": [
+                {
+                    "position": "main",
+                    "code": "int ok, rez;\nrez = izracunaj(\"10+2*4-8\/2+2^3+-2\", &ok);\nif (ok) printf(\"rezultat je: %d\\n\", rez); else printf(\"greska\\n\");\nrez = izracunaj(\"10+12+14+17\/2+-5^5\/7+12-14\", &ok);\nif (ok) printf(\"rezultat je: %d\\n\", rez); else printf(\"greska\\n\");\nrez = izracunaj(\"12345\/7+5^5+12\/7*14\", &ok);\nif (ok) printf(\"rezultat je: %d\\n\", rez); else printf(\"greska\\n\");\nrez = izracunaj(\"11+111+1234^-7--2^4\", &ok);\nif (ok) printf(\"rezultat je: %d\", rez); else printf(\"greska\\n\");\n",
+                    "use_markers": true
+                }
+            ],
+            "compile[debug]": [],
+            "execute": {
+                "expect": [
+                    "rezultat je: 20\nrezultat je: -404\nrezultat je: 4902\nrezultat je: 106"
+                ]
+            },
+            "debug": [],
+            "profile[memcheck]": [],
+            "profile[sgcheck]": []
+        }
+    ]
+}

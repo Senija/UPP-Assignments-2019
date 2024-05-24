@@ -1,0 +1,360 @@
+{
+    "id": 5646,
+    "name": "Osnove ra\u010dunarstva (2019\/2020), Zada\u0107a 2, Zadatak 2",
+    "languages": [
+        "C"
+    ],
+    "tools": {
+        "compile": {
+            "require": "gcc",
+            "features": [
+                "optimize",
+                "warn",
+                "pedantic"
+            ]
+        },
+        "compile[debug]": {
+            "require": "gcc",
+            "features": [
+                "debug"
+            ]
+        },
+        "execute": {
+            "environment": {
+                "timeout": 10,
+                "memory": 1000000
+            }
+        },
+        "debug": [],
+        "profile[memcheck]": {
+            "require": "valgrind",
+            "features": [
+                "memcheck"
+            ],
+            "environment": {
+                "timeout": 10,
+                "type" : "shell"
+            }
+        },
+        "profile[sgcheck]": {
+            "require": "valgrind",
+            "features": [
+                "sgcheck"
+            ],
+            "environment": {
+                "timeout": 10,
+                "type" : "shell"
+            }
+        }
+    },
+    "tests": [
+        {
+            "compile": [],
+            "options": [
+                "silent",
+                "terminate"
+            ]
+        },
+        {
+            "id": 1,
+            "compile[debug]": [],
+            "execute": {
+                "environment": {
+                    "stdin": "9\n5"
+                },
+                "expect": [
+                    "Odaberite cjelobrojnu operaciju:\n[1] Sabiranje\n[2] Oduzimanje\n[3] Mnozenje\n[4] Dijeljenje\n[5] Izlaz iz programa\n>>\nOdaberite cjelobrojnu operaciju:\n[1] Sabiranje\n[2] Oduzimanje\n[3] Mnozenje\n[4] Dijeljenje\n[5] Izlaz iz programa\n>>"
+                ]
+            },
+            "debug": [],
+            "profile[memcheck]": {
+                "environment": {
+                    "stdin": "9\n5"
+                }
+            },
+            "profile[sgcheck]": {
+                "environment": {
+                    "stdin": "9\n5"
+                }
+            },
+            "options": [
+                "reuse"
+            ]
+        },
+        {
+            "id": 2,
+            "execute": {
+                "environment": {
+                    "stdin": "1\n1 2\n5"
+                },
+                "expect": [
+                    "Odaberite cjelobrojnu operaciju:           \n[1] Sabiranje        \n[2] Oduzimanje       \n[3] Mnozenje         \n[4] Dijeljenje       \n[5] Izlaz iz programa\n>>\n[1] Sabiranje\nUnesite operande: *****       *****                          \n*   *           *    \n*   *       *****    \n*   *           *    \n*****       *****    \nOdaberite cjelobrojnu operaciju:\n[1] Sabiranje\n[2] Oduzimanje\n[3] Mnozenje\n[4] Dijeljenje\n[5] Izlaz iz programa               \n>>"
+                ]
+            },
+            "debug": [],
+            "profile[memcheck]": {
+                "environment": {
+                    "stdin": "1\n1 2\n5"
+                }
+            },
+            "profile[sgcheck]": {
+                "environment": {
+                    "stdin": "1\n1 2\n5"
+                }
+            },
+            "options": [
+                "reuse"
+            ]
+        },
+        {
+            "id": 3,
+            "execute": {
+                "environment": {
+                    "stdin": "1\n99 22\n5"
+                },
+                "expect": [
+                    "Odaberite cjelobrojnu operaciju:\n[1] Sabiranje\n[2] Oduzimanje\n[3] Mnozenje       \n[4] Dijeljenje       \n[5] Izlaz iz programa\n>>\n[1] Sabiranje\nUnesite operande: *****                   \n*                       \n*****       *****       \n*           *           \n*****       *  \nOdaberite cjelobrojnu operaciju:\n[1] Sabiranje\n[2] Oduzimanje\n[3] Mnozenje\n[4] Dijeljenje\n[5] Izlaz iz programa               \n>>"
+                ]
+            },
+            "debug": [],
+            "profile[memcheck]": {
+                "environment": {
+                    "stdin": "1\n99 22\n5"
+                }
+            },
+            "profile[sgcheck]": {
+                "environment": {
+                    "stdin": "1\n99 22\n5"
+                }
+            },
+            "options": [
+                "reuse"
+            ]
+        },
+        {
+            "id": 4,
+            "execute": {
+                "environment": {
+                    "stdin": "4\n8 0\n5"
+                },
+                "expect": [
+                    "Odaberite cjelobrojnu operaciju:   \n[1] Sabiranje\n[2] Oduzimanje\n[3] Mnozenje\n[4] Dijeljenje\n[5] Izlaz iz programa\n>>\n[4] Dijeljenje\nUnesite operande: *****                   \n*                       \n*****       *****       \n*           *           \n*****       *  \nOdaberite cjelobrojnu operaciju:\n[1] Sabiranje\n[2] Oduzimanje\n[3] Mnozenje\n[4] Dijeljenje\n[5] Izlaz iz programa       \n>>"
+                ]
+            },
+            "debug": [],
+            "profile[memcheck]": {
+                "environment": {
+                    "stdin": "4\n8 0\n5"
+                }
+            },
+            "profile[sgcheck]": {
+                "environment": {
+                    "stdin": "4\n8 0\n5"
+                }
+            },
+            "options": [
+                "reuse"
+            ]
+        },
+        {
+            "id": 5,
+            "execute": {
+                "environment": {
+                    "stdin": "2\n10 15\n5"
+                },
+                "expect": [
+                    "Odaberite cjelobrojnu operaciju:   \n[1] Sabiranje\n[2] Oduzimanje\n[3] Mnozenje\n[4] Dijeljenje\n[5] Izlaz iz programa\n>>\n[2] Oduzimanje\nUnesite operande: *****                   \n*                       \n*****       *****       \n*           *           \n*****       *  \nOdaberite cjelobrojnu operaciju:\n[1] Sabiranje\n[2] Oduzimanje\n[3] Mnozenje\n[4] Dijeljenje\n[5] Izlaz iz programa       \n>>"
+                ]
+            },
+            "debug": [],
+            "profile[memcheck]": {
+                "environment": {
+                    "stdin": "2\n10 15\n5"
+                }
+            },
+            "profile[sgcheck]": {
+                "environment": {
+                    "stdin": "2\n10 15\n5"
+                }
+            },
+            "options": [
+                "reuse"
+            ]
+        },
+        {
+            "id": 6,
+            "execute": {
+                "environment": {
+                    "stdin": "3\n12 12\n5"
+                },
+                "expect": [
+                    "Odaberite cjelobrojnu operaciju:   \n[1] Sabiranje\n[2] Oduzimanje\n[3] Mnozenje\n[4] Dijeljenje\n[5] Izlaz iz programa\n>>\n[3] Mnozenje\nUnesite operande: *****                   \n*                       \n*****       *****       \n*           *           \n*****       *  \nOdaberite cjelobrojnu operaciju:\n[1] Sabiranje\n[2] Oduzimanje\n[3] Mnozenje\n[4] Dijeljenje\n[5] Izlaz iz programa       \n>>"
+                ]
+            },
+            "debug": [],
+            "profile[memcheck]": {
+                "environment": {
+                    "stdin": "3\n12 12\n5"
+                }
+            },
+            "profile[sgcheck]": {
+                "environment": {
+                    "stdin": "3\n12 12\n5"
+                }
+            },
+            "options": [
+                "reuse"
+            ]
+        },
+        {
+            "id": 7,
+            "execute": {
+                "environment": {
+                    "stdin": "1\n-1 30\n5"
+                },
+                "expect": [
+                    "Odaberite cjelobrojnu operaciju:   \n[1] Sabiranje\n[2] Oduzimanje\n[3] Mnozenje\n[4] Dijeljenje\n[5] Izlaz iz programa\n>>\n[1] Sabiranje\nUnesite operande: *****       *****       \n    *       *   *       \n*****       *****       \n*               *       \n*****       *****       \nOdaberite cjelobrojnu operaciju:\n[1] Sabiranje\n[2] Oduzimanje\n[3] Mnozenje\n[4] Dijeljenje\n[5] Izlaz iz programa       \n>>"
+                ]
+            },
+            "debug": [],
+            "profile[memcheck]": {
+                "environment": {
+                    "stdin": "1\n-1 30\n5"
+                }
+            },
+            "profile[sgcheck]": {
+                "environment": {
+                    "stdin": "1\n-1 30\n5"
+                }
+            },
+            "options": [
+                "reuse"
+            ]
+        },
+        {
+            "id": 8,
+            "execute": {
+                "environment": {
+                    "stdin": "2\n1000 990\n5"
+                },
+                "expect": [
+                    "Odaberite cjelobrojnu operaciju:   \n[1] Sabiranje\n[2] Oduzimanje\n[3] Mnozenje\n[4] Dijeljenje\n[5] Izlaz iz programa\n>>\n[2] Oduzimanje\nUnesite operande:     *       *****       \n    *       *   *       \n    *       *   *       \n    *       *   *       \n    *       *****           \nOdaberite cjelobrojnu operaciju:\n[1] Sabiranje\n[2] Oduzimanje\n[3] Mnozenje\n[4] Dijeljenje\n[5] Izlaz iz programa       \n>>"
+                ]
+            },
+            "debug": [],
+            "profile[memcheck]": {
+                "environment": {
+                    "stdin": "2\n1000 990\n5"
+                }
+            },
+            "profile[sgcheck]": {
+                "environment": {
+                    "stdin": "2\n1000 990\n5"
+                }
+            },
+            "options": [
+                "reuse"
+            ]
+        },
+        {
+            "id": 9,
+            "execute": {
+                "environment": {
+                    "stdin": "4\n11 2\n5"
+                },
+                "expect": [
+                    "Odaberite cjelobrojnu operaciju:\n[1] Sabiranje\n[2] Oduzimanje\n[3] Mnozenje\n[4] Dijeljenje\n[5] Izlaz iz programa\n>>\n[4] Dijeljenje\nUnesite operande: *****       *****       \n*   *       *           \n*   *       *****       \n*   *           *       \n*****       *****       \n\nOdaberite cjelobrojnu operaciju:\n[1] Sabiranje\n[2] Oduzimanje\n[3] Mnozenje\n[4] Dijeljenje\n[5] Izlaz iz programa\n>>"
+                ]
+            },
+            "debug": [],
+            "profile[memcheck]": {
+                "environment": {
+                    "stdin": "4\n11 2\n5"
+                }
+            },
+            "profile[sgcheck]": {
+                "environment": {
+                    "stdin": "4\n11 2\n5"
+                }
+            },
+            "options": [
+                "reuse"
+            ]
+        },
+        {
+            "id": 10,
+            "execute": {
+                "environment": {
+                    "stdin": "3\n2 44\n5"
+                },
+                "expect": [
+                    "Odaberite cjelobrojnu operaciju:\n[1] Sabiranje\n[2] Oduzimanje\n[3] Mnozenje\n[4] Dijeljenje\n[5] Izlaz iz programa\n>>\n[3] Mnozenje\nUnesite operande: *****       *****       \n*   *       *   *       \n*****       *****       \n*   *       *   *       \n*****       *****       \n\nOdaberite cjelobrojnu operaciju:\n[1] Sabiranje\n[2] Oduzimanje\n[3] Mnozenje\n[4] Dijeljenje\n[5] Izlaz iz programa\n>>"
+                ]
+            },
+            "debug": [],
+            "profile[memcheck]": {
+                "environment": {
+                    "stdin": "3\n2 44\n5"
+                }
+            },
+            "profile[sgcheck]": {
+                "environment": {
+                    "stdin": "3\n2 44\n5"
+                }
+            },
+            "options": [
+                "reuse"
+            ]
+        },
+        {
+            "id": 11,
+            "execute": {
+                "environment": {
+                    "stdin": "1\n1 3\n5"
+                },
+                "expect": [
+                    "Odaberite cjelobrojnu operaciju:\n[1] Sabiranje\n[2] Oduzimanje\n[3] Mnozenje\n[4] Dijeljenje\n[5] Izlaz iz programa\n>>\n[1] Sabiranje\nUnesite operande: *****       *   *       \n*   *       *   *       \n*   *       *****       \n*   *           *       \n*****           *       \n\nOdaberite cjelobrojnu operaciju:\n[1] Sabiranje\n[2] Oduzimanje\n[3] Mnozenje\n[4] Dijeljenje\n[5] Izlaz iz programa\n>>"
+                ]
+            },
+            "debug": [],
+            "profile[memcheck]": {
+                "environment": {
+                    "stdin": "1\n1 3\n5"
+                }
+            },
+            "profile[sgcheck]": {
+                "environment": {
+                    "stdin": "1\n1 3\n5"
+                }
+            },
+            "options": [
+                "reuse"
+            ]
+        },
+        {
+            "id": 12,
+            "execute": {
+                "environment": {
+                    "stdin": "4\n56 0\n5"
+                },
+                "expect": [
+                    "Odaberite cjelobrojnu operaciju:\n[1] Sabiranje\n[2] Oduzimanje\n[3] Mnozenje\n[4] Dijeljenje\n[5] Izlaz iz programa\n>>\n[4] Dijeljenje\nUnesite operande: *****                   \n*                       \n*****       *****       \n*           *           \n*****       *           \n\nOdaberite cjelobrojnu operaciju:\n[1] Sabiranje\n[2] Oduzimanje\n[3] Mnozenje\n[4] Dijeljenje\n[5] Izlaz iz programa\n>>"
+                ]
+            },
+            "debug": [],
+            "profile[memcheck]": {
+                "environment": {
+                    "stdin": "4\n56 0\n5"
+                }
+            },
+            "profile[sgcheck]": {
+                "environment": {
+                    "stdin": "4\n56 0\n5"
+                }
+            },
+            "options": [
+                "reuse"
+            ]
+        }
+    ]
+}

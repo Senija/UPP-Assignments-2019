@@ -1,0 +1,318 @@
+{
+    "id": 5651,
+    "name": "Osnove ra\u010dunarstva (2019\/2020), Zada\u0107a 3, Zadatak 1",
+    "languages": [
+        "C"
+    ],
+    "tools": {
+        "compile": {
+            "require": "gcc",
+            "features": [
+                "optimize",
+                "warn",
+                "pedantic"
+            ]
+        },
+        "compile[debug]": {
+            "require": "gcc",
+            "features": [
+                "debug"
+            ]
+        },
+        "execute": {
+            "environment": {
+                "timeout": 10,
+                "memory": 1000000
+            }
+        },
+        "debug": [],
+        "profile[memcheck]": {
+            "require": "valgrind",
+            "features": [
+                "memcheck"
+            ],
+            "environment": {
+                "timeout": 10
+            }
+        },
+        "profile[sgcheck]": {
+            "require": "valgrind",
+            "features": [
+                "sgcheck"
+            ],
+            "environment": {
+                "timeout": 10
+            }
+        }
+    },
+    "tests": [
+        {
+            "compile": [],
+            "options": [
+                "silent",
+                "terminate"
+            ]
+        },
+        {
+            "id": 1,
+            "parse" : {
+                "rename_symbols" : {
+                    "f" : "_f",
+                    "g" : "_g"
+                }
+            },
+            "patch": [ 
+                {
+                    "position": "main",
+                    "code": "\tint status=-1;\n\tdouble rez = presjek(-3, 3, &status);\n\tprintf(\"%.3f %d\\n\", rez, status);",
+                    "use_markers": true
+                }, 
+                {
+                    "position": "top_of_file",
+                    "code": "double f(double x) { return 2*x + 2; }\ndouble g(double x) { return 4*x - 2; }\n"
+                }
+            ],
+            "compile[debug]": [],
+            "execute": {
+                "expect": [
+                    "2.000 0"
+                ]
+            },
+            "debug": [],
+            "profile[memcheck]": [],
+            "profile[sgcheck]": []
+        },
+        {
+            "id": 2,
+            "parse" : {
+                "rename_symbols" : {
+                    "f" : "_f",
+                    "g" : "_g"
+                }
+            },
+            "patch": [ 
+                {
+                    "position": "main",
+                    "code": "\tint status=-1;\n\tdouble rez = presjek(-1, 1, &status);\n\tprintf(\"%g %d\\n\", rez, status);",
+                    "use_markers": true
+                }, 
+                {
+                    "position": "top_of_file",
+                    "code": "double f(double x) { return 2*x + 2; }\ndouble g(double x) { return 4*x + 2; }\n"
+                }
+            ],
+            "compile[debug]": [],
+            "execute": {
+                "expect": [
+                    "0 0"
+                ]
+            },
+            "debug": [],
+            "profile[memcheck]": [],
+            "profile[sgcheck]": []
+        },
+        {
+            "id": 3,
+            "parse" : {
+                "rename_symbols" : {
+                    "f" : "_f",
+                    "g" : "_g"
+                }
+            },
+            "patch": [ 
+                {
+                    "position": "main",
+                    "code": "\tint status=-1;\n\tdouble rez = presjek(0, 1, &status);\n\tprintf(\"%g %d\\n\", rez, status);",
+                    "use_markers": true
+                }, 
+                {
+                    "position": "top_of_file",
+                    "code": "#include <math.h>\ndouble f(double x) { return sin(x); }\ndouble g(double x) { return sin(x); }\n"
+                }
+            ],
+            "compile[debug]": [],
+            "execute": {
+                "expect": [
+                    "0 2"
+                ]
+            },
+            "debug": [],
+            "profile[memcheck]": [],
+            "profile[sgcheck]": []
+        },
+        {
+            "id": 4,
+            "parse" : {
+                "rename_symbols" : {
+                    "f" : "_f",
+                    "g" : "_g"
+                }
+            },
+            "patch": [ 
+                {
+                    "position": "main",
+                    "code": "\tint status=-1;\n\tdouble rez = presjek(0, 1, &status);\n\tprintf(\"%.3f %d\\n\", rez, status);\n\trez = presjek(1, 2, &status);\n\tprintf(\"%g %d\\n\", rez, status);",
+                    "use_markers": true
+                }, 
+                {
+                    "position": "top_of_file",
+                    "code": "#include <math.h>\ndouble f(double x) { return sin(x); }\ndouble g(double x) { return cos(x); }\n"
+                }
+            ],
+            "compile[debug]": [],
+            "execute": {
+                "expect": [
+                    "0.785 0\n0 1"
+                ]
+            },
+            "debug": [],
+            "profile[memcheck]": [],
+            "profile[sgcheck]": []
+        },
+        {
+            "id": 5,
+            "parse" : {
+                "rename_symbols" : {
+                    "f" : "_f",
+                    "g" : "_g"
+                }
+            },
+            "patch": [ 
+                {
+                    "position": "main",
+                    "code": "\tint status=-1;\n\tdouble rez = presjek(0, 10, &status);\n\tprintf(\"%.2f %d\\n\", rez, status);",
+                    "use_markers": true
+                }, 
+                {
+                    "position": "top_of_file",
+                    "code": "double f(double x) { return x+2; }\ndouble g(double x) { return -x+3; }\n"
+                }
+            ],
+            "compile[debug]": [],
+            "execute": {
+                "expect": [
+                    "0.50 0"
+                ]
+            },
+            "debug": [],
+            "profile[memcheck]": [],
+            "profile[sgcheck]": []
+        },
+        {
+            "id": 6,
+            "parse" : {
+                "rename_symbols" : {
+                    "f" : "_f",
+                    "g" : "_g"
+                }
+            },
+            "patch": [ 
+                {
+                    "position": "main",
+                    "code": "\tint status=-1;\n\tdouble rez = presjek(0, 1, &status);\n\tprintf(\"%.3f %d\\n\", rez, status);\n\trez = presjek(0, 10, &status);\n\tprintf(\"%.3f %d\\n\", rez, status);",
+                    "use_markers": true
+                }, 
+                {
+                    "position": "top_of_file",
+                    "code": "#include <math.h>\ndouble f(double x) { return tan(x); }\ndouble g(double x) { return -x+2; }\n"
+                }
+            ],
+            "compile[debug]": [],
+            "execute": {
+                "expect": [
+                    "0.854 0\n5.031 0", "0.854 0\n0.854 0"
+                ]
+            },
+            "debug": [],
+            "profile[memcheck]": [],
+            "profile[sgcheck]": []
+        },
+        {
+            "id": 7,
+            "parse" : {
+                "rename_symbols" : {
+                    "f" : "_f",
+                    "g" : "_g"
+                }
+            },
+            "patch": [ 
+                {
+                    "position": "main",
+                    "code": "\tint status=-1;\n\tdouble rez = presjek(0, 100, &status);\n\tprintf(\"%g %d\\n\", rez, status);",
+                    "use_markers": true
+                }, 
+                {
+                    "position": "top_of_file",
+                    "code": "double f(double x) { return x*x-2*x+3; }\ndouble g(double x) { return x; }\n"
+                }
+            ],
+            "compile[debug]": [],
+            "execute": {
+                "expect": [
+                    "0 1"
+                ]
+            },
+            "debug": [],
+            "profile[memcheck]": [],
+            "profile[sgcheck]": []
+        },
+        {
+            "id": 8,
+            "parse" : {
+                "rename_symbols" : {
+                    "f" : "_f",
+                    "g" : "_g"
+                }
+            },
+            "patch": [ 
+                {
+                    "position": "main",
+                    "code": "\tint status=-1;\n\tdouble rez = presjek(0, 100, &status);\n\tprintf(\"%.3f %d\\n\", rez, status);",
+                    "use_markers": true
+                }, 
+                {
+                    "position": "top_of_file",
+                    "code": "double f(double x) { return x*x-2*x+3; }\ndouble g(double x) { return 2*x; }\n"
+                }
+            ],
+            "compile[debug]": [],
+            "execute": {
+                "expect": [
+                    "1.000 0"
+                ]
+            },
+            "debug": [],
+            "profile[memcheck]": [],
+            "profile[sgcheck]": []
+        },
+        {
+            "id": 9,
+            "parse" : {
+                "rename_symbols" : {
+                    "f" : "_f",
+                    "g" : "_g"
+                }
+            },
+            "patch": [ 
+                {
+                    "position": "main",
+                    "code": "\tint status=-1;\n\tdouble rez = presjek(0, 0.5, &status);\n\tprintf(\"%.3f %d\\n\", rez, status);\n\trez = presjek(0.5, 1, &status);\n\tprintf(\"%.3f %d\\n\", rez, status);\n\trez = presjek(1, 2, &status);\n\tprintf(\"%.3f %d\\n\", rez, status);",
+                    "use_markers": true
+                }, 
+                {
+                    "position": "top_of_file",
+                    "code": "double f(double x) { return x*x-2*x+3; }\ndouble g(double x) { return 2.5; }\n"
+                }
+            ],
+            "compile[debug]": [],
+            "execute": {
+                "expect": [
+                    "0.293 0\n0.000 1\n1.707 0"
+                ]
+            },
+            "debug": [],
+            "profile[memcheck]": [],
+            "profile[sgcheck]": []
+        }
+    ]
+}

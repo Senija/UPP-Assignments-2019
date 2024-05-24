@@ -1,0 +1,310 @@
+{
+    "id": 5645,
+    "name": "Osnove ra\u010dunarstva (2019\/2020), Zada\u0107a 2, Zadatak 1",
+    "languages": [
+        "C"
+    ],
+    "tools": {
+        "compile": {
+            "require": "gcc",
+            "features": [
+                "optimize",
+                "warn",
+                "pedantic"
+            ]
+        },
+        "compile[debug]": {
+            "require": "gcc",
+            "features": [
+                "debug"
+            ]
+        },
+        "execute": {
+            "environment": {
+                "timeout": 10,
+                "memory": 1000000
+            }
+        },
+        "debug": [],
+        "profile[memcheck]": {
+            "require": "valgrind",
+            "features": [
+                "memcheck"
+            ],
+            "environment": {
+                "timeout": 10,
+		"type" : "shell"
+            }
+        },
+        "profile[sgcheck]": {
+            "require": "valgrind",
+            "features": [
+                "sgcheck"
+            ],
+            "environment": {
+                "timeout": 10,
+		"type" : "shell"
+            }
+        }
+    },
+    "tests": [
+        {
+            "compile": [],
+            "options": [
+                "silent",
+                "terminate"
+            ]
+        },
+        {
+            "id": 1,
+            "compile[debug]": [],
+            "execute": {
+                "environment": {
+                    "stdin": "1\n1"
+                },
+                "expect": [
+                    "Unesite prvu tacku intervala: Unesite drugu tacku intervala: Neispravan interval!\n\n"
+                ]
+            },
+            "debug": [],
+            "profile[memcheck]": {
+                "environment": {
+                    "stdin": "1\n1"
+                }
+            },
+            "profile[sgcheck]": {
+                "environment": {
+                    "stdin": "1\n1"
+                }
+            },
+            "options": [
+                "reuse"
+            ]
+        },
+        {
+            "id": 2,
+            "execute": {
+                "environment": {
+                    "stdin": "1\n0"
+                },
+                "expect": [
+                    "Unesite prvu tacku intervala: Unesite drugu tacku intervala: Nedozvoljena vrijednost!\n"
+                ]
+            },
+            "debug": [],
+            "profile[memcheck]": {
+                "environment": {
+                    "stdin": "1\n0"
+                }
+            },
+            "profile[sgcheck]": {
+                "environment": {
+                    "stdin": "1\n0"
+                }
+            },
+            "options": [
+                "reuse"
+            ]
+        },
+        {
+            "id": 3,
+            "execute": {
+                "environment": {
+                    "stdin": "1\n9999"
+                },
+                "expect": [
+                    "Unesite prvu tacku intervala: Unesite drugu tacku intervala: Neispravan interval!\n"
+                ]
+            },
+            "debug": [],
+            "profile[memcheck]": {
+                "environment": {
+                    "stdin": "1\n9999"
+                }
+            },
+            "profile[sgcheck]": {
+                "environment": {
+                    "stdin": "1\n9999"
+                }
+            },
+            "options": [
+                "reuse"
+            ]
+        },
+        {
+            "id": 4,
+            "execute": {
+                "environment": {
+                    "stdin": "1\n5\n11"
+                },
+                "expect": [
+                    "Unesite prvu tacku intervala: Unesite drugu tacku intervala: Unesite eksponent: Neispravan eksponent!"
+                ]
+            },
+            "debug": [],
+            "profile[memcheck]": {
+                "environment": {
+                    "stdin": "1\n5\n11"
+                }
+            },
+            "profile[sgcheck]": {
+                "environment": {
+                    "stdin": "1\n5\n11"
+                }
+            },
+            "options": [
+                "reuse"
+            ]
+        },
+        {
+            "id": 5,
+            "execute": {
+                "environment": {
+                    "stdin": "1\n5\n1\n0.001"
+                },
+                "expect": [
+                    "Unesite prvu tacku intervala: Unesite drugu tacku intervala: Unesite eksponent: Unesite korak diskretizacije: Korak    x            y = f(x)\n----------------------------------\n    1. 1.000000         1.00000\n    2. 1.001000         1.00100\n    3. 1.002000         1.00200\n    4. 1.003000         1.00300\n(...)\n 4000. 4.999000         4.99900\n----------------------------------\nP(x^1)[1,5]= 11.998000 (dx=0.001)"
+                ]
+            },
+            "debug": [],
+            "profile[memcheck]": {
+                "environment": {
+                    "stdin": "1\n5\n1\n0.001"
+                }
+            },
+            "profile[sgcheck]": {
+                "environment": {
+                    "stdin": "1\n5\n1\n0.001"
+                }
+            },
+            "options": [
+                "reuse"
+            ]
+        },
+        {
+            "id": 6,
+            "execute": {
+                "environment": {
+                    "stdin": "-10"
+                },
+                "expect": [
+                    "Unesite prvu tacku intervala: Nedozvoljena vrijednost!"
+                ]
+            },
+            "debug": [],
+            "profile[memcheck]": {
+                "environment": {
+                    "stdin": "-10"
+                }
+            },
+            "profile[sgcheck]": {
+                "environment": {
+                    "stdin": "-10"
+                }
+            },
+            "options": [
+                "reuse"
+            ]
+        },
+        {
+            "id": 7,
+            "execute": {
+                "environment": {
+                    "stdin": "1\n9\n5\n0.001"
+                },
+                "expect": [
+                    "Unesite prvu tacku intervala: Unesite drugu tacku intervala: Unesite eksponent: Unesite korak diskretizacije: Korak    x            y = f(x)\n----------------------------------\n    1. 1.000000         1.00000\n    2. 1.001000         1.00501\n    3. 1.002000         1.01004\n    4. 1.003000         1.01509\n(...)\n 8000. 8.999000     59016.20229\n----------------------------------\nP(x^5)[1,9]= 88543.812067 (dx=0.001)"
+                ]
+            },
+            "debug": [],
+            "profile[memcheck]": {
+                "environment": {
+                    "stdin": "1\n9\n5\n0.001"
+                }
+            },
+            "profile[sgcheck]": {
+                "environment": {
+                    "stdin": "1\n9\n5\n0.001"
+                }
+            },
+            "options": [
+                "reuse"
+            ]
+        },
+        {
+            "id": 9,
+            "execute": {
+                "environment": {
+                    "stdin": "1\n2\n9\n1"
+                },
+                "expect": [
+                    "Unesite prvu tacku intervala: Unesite drugu tacku intervala: Unesite eksponent: Unesite korak diskretizacije: Korak    x            y = f(x)\n----------------------------------\n    1. 1.000000         1.00000\n\n----------------------------------\nP(x^9)[1,2]= 1.000000 (dx=1)"
+                ]
+            },
+            "debug": [],
+            "profile[memcheck]": {
+                "environment": {
+                    "stdin": "1\n2\n9\n1"
+                }
+            },
+            "profile[sgcheck]": {
+                "environment": {
+                    "stdin": "1\n2\n9\n1"
+                }
+            },
+            "options": [
+                "reuse"
+            ]
+        },
+        {
+            "id": 10,
+            "execute": {
+                "environment": {
+                    "stdin": "1\n2\n9\n0.5"
+                },
+                "expect": [
+                    "Unesite prvu tacku intervala: Unesite drugu tacku intervala: Unesite eksponent: Unesite korak diskretizacije: Korak    x            y = f(x)\n----------------------------------\n    1. 1.000000         1.00000\n    2. 1.500000        38.44336\n\n----------------------------------\nP(x^9)[1,2]= 19.721680 (dx=0.5)"
+                ]
+            },
+            "debug": [],
+            "profile[memcheck]": {
+                "environment": {
+                    "stdin": "1\n2\n9\n0.5"
+                }
+            },
+            "profile[sgcheck]": {
+                "environment": {
+                    "stdin": "1\n2\n9\n0.5"
+                }
+            },
+            "options": [
+                "reuse"
+            ]
+        },
+        {
+            "id": 11,
+            "execute": {
+                "environment": {
+                    "stdin": "1\n5\n5\n1"
+                },
+                "expect": [
+                    "Unesite prvu tacku intervala: Unesite drugu tacku intervala: Unesite eksponent: Unesite korak diskretizacije: Korak    x            y = f(x)\n----------------------------------\n    1. 1.000000         1.00000\n    2. 2.000000        32.00000\n    3. 3.000000       243.00000\n    4. 4.000000      1024.00000\n\n----------------------------------\nP(x^5)[1,5]= 1300.000000 (dx=1)"
+                ]
+            },
+            "debug": [],
+            "profile[memcheck]": {
+                "environment": {
+                    "stdin": "1\n5\n5\n1"
+                }
+            },
+            "profile[sgcheck]": {
+                "environment": {
+                    "stdin": "1\n5\n5\n1"
+                }
+            },
+            "options": [
+                "reuse"
+            ]
+        }
+    ]
+}

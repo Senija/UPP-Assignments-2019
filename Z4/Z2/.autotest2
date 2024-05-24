@@ -1,0 +1,153 @@
+{
+    "id": 5597,
+    "name": "Osnove ra\u010dunarstva (2019\/2020), Zada\u0107a 4, zadatak 2",
+    "languages": [
+        "C"
+    ],
+    "tools": {
+        "compile": {
+            "require": "gcc",
+            "features": [
+                "optimize",
+                "warn",
+                "pedantic"
+            ]
+        },
+        "compile[debug]": {
+            "require": "gcc",
+            "features": [
+                "debug"
+            ]
+        },
+        "execute": {
+            "environment": {
+                "timeout": 10,
+                "memory": 1000000
+            }
+        },
+        "debug": [],
+        "profile[memcheck]": {
+            "require": "valgrind",
+            "features": [
+                "memcheck"
+            ],
+            "environment": {
+                "timeout": 10
+            }
+        },
+        "profile[sgcheck]": {
+            "require": "valgrind",
+            "features": [
+                "sgcheck"
+            ],
+            "environment": {
+                "timeout": 10
+            }
+        }
+    },
+    "tests": [
+        {
+            "compile": [],
+            "options": [
+                "silent",
+                "terminate"
+            ]
+        },
+        {
+            "id": 1,
+            "patch": [
+                {
+                    "position": "main",
+                    "code": "char tekst[] = \"Vatra vata vraTa tava Vrat VARTA\";\nprintf(\"'%s'\", izbaci_anagrame(tekst, \"trava\"));",
+                    "use_markers": true
+                }
+            ],
+            "compile[debug]": [],
+            "execute": {
+                "expect": [
+                    "'vata tava Vrat'"
+                ],
+                "matching": "whitespace"
+            },
+            "debug": [],
+            "profile[memcheck]": {
+                "matching": "whitespace"
+            },
+            "profile[sgcheck]": {
+                "matching": "whitespace"
+            }
+        },
+        {
+            "id": 2,
+            "patch": [
+                {
+                    "position": "main",
+                    "code": "char tekst[] = \"Ovo je neki primjer malo duzeg teksta\";\nchar anagrami[] = \"Ana gram oloma vo oov jejeje\";\nprintf(\"'%s'\", izbaci_anagrame(tekst, anagrami));",
+                    "use_markers": true
+                }
+            ],
+            "compile[debug]": [],
+            "execute": {
+                "expect": [
+                    "'je neki primjer malo duzeg teksta'"
+                ],
+                "matching": "whitespace"
+            },
+            "debug": [],
+            "profile[memcheck]": {
+                "matching": "whitespace"
+            },
+            "profile[sgcheck]": {
+                "matching": "whitespace"
+            }
+        },
+        {
+            "id": 3,
+            "patch": [
+                {
+                    "position": "main",
+                    "code": "char tekst[] = \"dvije rijeci\", tekst2[] = \"dvije rijeci\", tekst3[] = \"dvije rijeci\";\nprintf(\"'%s'\\n\", izbaci_anagrame(tekst, \"dvije\"));\nprintf(\"'%s'\\n\", izbaci_anagrame(tekst2, \"rijeci\"));\nprintf(\"'%s'\\n\", izbaci_anagrame(tekst3, \"rijeci dvije\"));\n",
+                    "use_markers": true
+                }
+            ],
+            "compile[debug]": [],
+            "execute": {
+                "expect": [
+                    "'rijeci'\n'dvije'\n''\n"
+                ],
+                "matching": "whitespace"
+            },
+            "debug": [],
+            "profile[memcheck]": {
+                "matching": "whitespace"
+            },
+            "profile[sgcheck]": {
+                "matching": "whitespace"
+            }
+        },
+        {
+            "id": 4,
+            "patch": [
+                {
+                    "position": "main",
+                    "code": "char tekst[] = \"aaaaaaaaaaaaaaaaaaaaaaa\";\nprintf(\"'%s'\\n\", izbaci_anagrame(tekst, \"a\"));\nprintf(\"'%s'\\n\", izbaci_anagrame(tekst, \"aaaa\"));\nprintf(\"'%s'\", izbaci_anagrame(tekst, \"b aaaaaaaaaaaaaaaaaaaaaaa\"));",
+                    "use_markers": true
+                }
+            ],
+            "compile[debug]": [],
+            "execute": {
+                "expect": [
+                    "'aaaaaaaaaaaaaaaaaaaaaaa'\n'aaaaaaaaaaaaaaaaaaaaaaa'\n''"
+                ],
+                "matching": "whitespace"
+            },
+            "debug": [],
+            "profile[memcheck]": {
+                "matching": "whitespace"
+            },
+            "profile[sgcheck]": {
+                "matching": "whitespace"
+            }
+        }
+    ]
+}

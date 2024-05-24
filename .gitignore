@@ -50,3 +50,10 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+.runme
+.output
+.gcc.out
+.valgrind.out
+.at_result
+.autotest

@@ -1,0 +1,209 @@
+{
+    "id": 5655,
+    "name": "Osnove ra\u010dunarstva (2019\/2020), Zada\u0107a 4, Zadatak 1",
+    "languages": [
+        "C"
+    ],
+    "tools": {
+        "compile": {
+            "require": "gcc",
+            "features": [
+                "optimize",
+                "warn",
+                "pedantic"
+            ]
+        },
+        "compile[debug]": {
+            "require": "gcc",
+            "features": [
+                "debug"
+            ]
+        },
+        "execute": {
+            "environment": {
+                "timeout": 10,
+                "memory": 1000000
+            }
+        },
+        "debug": [],
+        "profile[memcheck]": {
+            "require": "valgrind",
+            "features": [
+                "memcheck"
+            ],
+            "environment": {
+                "timeout": 10
+            }
+        },
+        "profile[sgcheck]": {
+            "require": "valgrind",
+            "features": [
+                "sgcheck"
+            ],
+            "environment": {
+                "timeout": 10
+            }
+        }
+    },
+    "tests": [
+        {
+            "compile": [],
+            "options": [
+                "silent",
+                "terminate"
+            ]
+        },
+        {
+            "id": 1,
+            "patch": [
+                {
+                    "position": "main",
+                    "code": "char tekst[] = \"Od 3 broja u stringu, zbir -0.2 i 1.55 daje 1.35 ili 2.9?\";\nchar *p = nadji_zbir(tekst);\nif (p)\n    printf(\"%d\", p-tekst);\nelse\n    printf(\"NULL\");",
+                    "use_markers": true
+                }
+            ],
+            "compile[debug]": [],
+            "execute": {
+                "expect": [
+                    "27"
+                ]
+            },
+            "debug": [],
+            "profile[memcheck]": [],
+            "profile[sgcheck]": []
+        },
+        {
+            "id": 2,
+            "patch": [
+                {
+                    "position": "main",
+                    "code": "razlike(\"Od 3 broja u stringu, zbir -0.2 i 1.55 daje 1.35 ili 2.9?\");\nprintf(\"Sljedeci test:\\n\");\nrazlike(\"Od 3 broja u stringu, zbir -0.1 i 1.55 daje 1.25 ili 2.8?\");\n",
+                    "use_markers": true
+                }
+            ],
+            "compile[debug]": [],
+            "execute": {
+                "expect": [
+                    "-0.2 - 1.55 = -1.75\n1.55 - 1.35 = 0.2\nSljedeci test:\n1.55 - 1.25 = 0.3"
+                ]
+            },
+            "debug": [],
+            "profile[memcheck]": [],
+            "profile[sgcheck]": []
+        },
+        {
+            "id": 3,
+            "patch": [
+                {
+                    "position": "main",
+                    "code": "char tekst[] = \"Od 3 broja u stringu, zbir -0.2 i 1.55 daje 1.25 ili 2.9?\";\nchar *p = nadji_zbir(tekst);\nif (p)\n    printf(\"%d\", p-tekst);\nelse\n    printf(\"NULL\");",
+                    "use_markers": true
+                }
+            ],
+            "compile[debug]": [],
+            "execute": {
+                "expect": [
+                    "NULL"
+                ]
+            },
+            "debug": [],
+            "profile[memcheck]": [],
+            "profile[sgcheck]": []
+        },
+        {
+            "id": 4,
+            "patch": [
+                {
+                    "position": "main",
+                    "code": "char tekst[] = \"Od 3 broja u stringu, zbir -0.3 i 1.55 daje 1.35 ili 2.9?\";\nchar *p = nadji_zbir(tekst);\nif (p)\n    printf(\"%d\", p-tekst);\nelse\n    printf(\"NULL\");",
+                    "use_markers": true
+                }
+            ],
+            "compile[debug]": [],
+            "execute": {
+                "expect": [
+                    "34"
+                ]
+            },
+            "debug": [],
+            "profile[memcheck]": [],
+            "profile[sgcheck]": []
+        },
+        {
+            "id": 5,
+            "patch": [
+                {
+                    "position": "main",
+                    "code": "char tekst[] = \"Od 33 broja u stringu, zbir 5 i 8 daje 13 ili 21?\";\nchar *p = nadji_zbir(tekst);\nif (p)\n    printf(\"%d\", p-tekst);\nelse\n    printf(\"NULL\");",
+                    "use_markers": true
+                }
+            ],
+            "compile[debug]": [],
+            "execute": {
+                "expect": [
+                    "28"
+                ]
+            },
+            "debug": [],
+            "profile[memcheck]": [],
+            "profile[sgcheck]": []
+        },
+        {
+            "id": 6,
+            "patch": [
+                {
+                    "position": "main",
+                    "code": "razlike(\"Od 33 broja u stringu, zbir 5 i 8 daje 13 ili 21?\");",
+                    "use_markers": true
+                }
+            ],
+            "compile[debug]": [],
+            "execute": {
+                "expect": [
+                    "5 - 8 = -3\n8 - 13 = -5\n"
+                ]
+            },
+            "debug": [],
+            "profile[memcheck]": [],
+            "profile[sgcheck]": []
+        },
+        {
+            "id": 7,
+            "patch": [
+                {
+                    "position": "main",
+                    "code": "razlike(\"Zbir 2 i 1 je 3 a ne 4 medjutim 9 i 5 je 14\");",
+                    "use_markers": true
+                }
+            ],
+            "compile[debug]": [],
+            "execute": {
+                "expect": [
+                    "2 - 1 = 1\n1 - 3 = -2\n9 - 5 = 4"
+                ]
+            },
+            "debug": [],
+            "profile[memcheck]": [],
+            "profile[sgcheck]": []
+        },
+        {
+            "id": 11,
+            "patch": [
+                {
+                    "position": "main",
+                    "code": "razlike(\"0.0001 -0.0001 0 42.9989 42.9989 85.9978\");",
+                    "use_markers": true
+                }
+            ],
+            "compile[debug]": [],
+            "execute": {
+                "expect": [
+                    "0.0001 - -0.0001 = 0.0002\n0 - 42.9989 = -42.9989\n42.9989 - 42.9989 = 0"
+                ]
+            },
+            "debug": [],
+            "profile[memcheck]": [],
+            "profile[sgcheck]": []
+        }
+    ]
+}
